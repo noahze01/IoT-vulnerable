@@ -40,7 +40,7 @@ import requests
 
 ip = "192.168.0.1"
 url = "http://" + ip + "/goform/fast_setting_get"
-
+response = requests.post(url)
 print(response.text)
 ```
 

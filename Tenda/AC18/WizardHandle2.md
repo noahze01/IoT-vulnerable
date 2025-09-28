@@ -44,7 +44,7 @@ import requests
 
 ip = "192.168.0.1"
 url = "http://" + ip + "/goform/getAdvanceStatus"
-
+response = requests.post(url)
 print(response.text)
 ```
 

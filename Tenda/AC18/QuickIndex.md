@@ -40,7 +40,7 @@ import requests
 
 ip = "192.168.0.1"
 url = "http://" + ip + "/goform/GetDDNSCfg"
-
+response = requests.post(url)
 print(response.text)
 ```
 
