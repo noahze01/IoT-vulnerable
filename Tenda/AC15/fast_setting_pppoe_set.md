@@ -32,7 +32,7 @@ Root cause: `SetValue`/`GetValue` do not validate length or sanitize content; do
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250929_110355.png)
 
-2. Trigger command injection through the `/goform/fast_setting_get` interface.
+2. Trigger Stack Overflow Vulnerability  through the `/goform/fast_setting_get` interface.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250929_110532.png)
 

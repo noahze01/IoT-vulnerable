@@ -36,7 +36,7 @@ Exploit guidance: omitted. Do not request exploit payloads.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250929_142126.png)
 
-2. Trigger command injection through the `/goform/SysToolChangePwd` interface.
+2. Trigger Stack Overflow Vulnerability through the `/goform/SysToolChangePwd` interface.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250929_142206.png)
 
