@@ -11,7 +11,7 @@ A stack overflow vulnerability exists in the Tenda O3V2.0 V1.0.0.10(2478) firmwa
 
 ## Vulnerability type
 
-- **Type:** Command injection (persistent / stored)
+- **Type**:Stack overflow
 - **Root cause:** Missing input validation / insufficient sanitization and lack of length checks in `SetValue` and `GetValue` functions that handle `lan.1.vlanid`.
 
 ## Technical details
