@@ -16,11 +16,11 @@ A stack overflow vulnerability exists in the Tenda O3V2.0 V1.0.0.10(2478) firmwa
 
 ## Technical details
 
-- The `setDhcpConfig` endpoint accepts a POST parameter `dhcpEn` and calls `SetValue("dhcps.en", Var)` without enforcing a maximum length or sanitizing shell metacharacters.
+- The `setDhcpConfig` endpoint accepts a POST parameter `dhcpEn` and calls `SetValue("dhcps.en", Var)` without enforcing a maximum length.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_112937.png)
 
-- The `getDhcpConfig` endpoint reads `dhcpEn` via `GetValue("dhcps.en", v15)` and passes it into a shell-invoking context (or a system call) without sanitization, making stored payloads executed when the endpoint is processed.
+- The `getDhcpConfig` endpoint retrieves the `dhcpEn` parameter using `GetValue("dhcps.en", v15)` and stores it on the stack without proper boundary checks, which may result in a stack overflow vulnerability.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_113229.png)
 

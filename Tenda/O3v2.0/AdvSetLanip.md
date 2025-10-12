@@ -16,14 +16,19 @@ A stack overflow vulnerability exists in the Tenda O3V2.0 V1.0.0.10(2478) firmwa
 
 ## Technical details
 
-- The `AdvSetLanip` endpoint accepts a POST parameter `ip` and calls `SetValue("lan.ip", v13)` without enforcing a maximum length or sanitizing shell metacharacters.
+- The `AdvSetLanip` endpoint accepts a POST parameter `ip` and calls `SetValue("lan.ip", v13)` without enforcing a maximum length.
+
 - Condition: For the program to execute this branch, the value of the POST parameter "lanType" must not be set to "Static".
+
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_100849.png)
 
-- The `getLocalInfo` endpoint reads `lan.ip` via `GetValue("lan.ip", v6)` and passes it into a shell-invoking context (or a system call) without sanitization, making stored payloads executed when the endpoint is processed.
-- ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_101449.png)
-- Both `SetValue` and `GetValue` lack proper validation of the value contents and length.
+- The `getLocalInfo` endpoint retrieves the `ip` parameter using `GetValue("lan.ip", v6` and stores it on the stack without proper boundary checks, which may result in a stack overflow vulnerability.
+
+
+![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_101449.png)
+
+Both `SetValue` and `GetValue` lack proper validation of the value contents and length.
 
 ## Proof of Concept
 

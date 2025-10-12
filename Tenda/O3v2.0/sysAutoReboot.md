@@ -16,11 +16,11 @@ A stack overflow vulnerability exists in the Tenda O3V2.0 V1.0.0.10(2478) firmwa
 
 ## Technical details
 
-- The `sysAutoReboot` endpoint accepts a POST parameter `enable` and calls `SetValue("sys.schedulereboot.enable", Var)` without enforcing a maximum length or sanitizing shell metacharacters.
+- The `sysAutoReboot` endpoint accepts a POST parameter `enable` and calls `SetValue("sys.schedulereboot.enable", Var)` without enforcing a maximum length.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_114103.png)
 
-- The `getNetworkService` endpoint reads `enable` via `GetValue("sys.schedulereboot.enable", v50)` and passes it into a shell-invoking context (or a system call) without sanitization, making stored payloads executed when the endpoint is processed.
+- The `getNetworkService` endpoint retrieves the `enable` parameter using `GetValue("sys.schedulereboot.enable", v50)` and stores it on the stack without proper boundary checks, which may result in a stack overflow vulnerability.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_114328.png)
 

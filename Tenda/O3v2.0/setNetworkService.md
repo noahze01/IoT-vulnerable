@@ -16,13 +16,13 @@ A stack overflow vulnerability exists in the Tenda O3V2.0 V1.0.0.10(2478) firmwa
 
 ## Technical details
 
-- The `setNetworkService` endpoint accepts a POST parameter `upnpEn` and calls `SetValue("adv.upnp.en", Var)` without enforcing a maximum length or sanitizing shell metacharacters.
+- The `setNetworkService` endpoint accepts a POST parameter `upnpEn` and calls `SetValue("adv.upnp.en", Var)` without enforcing a maximum length.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_111238.png)
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_111355.png)
 
-- The `getNetworkService` endpoint reads `upnpEn` via `GetValue("adv.upnp.en", v64)` and passes it into a shell-invoking context (or a system call) without sanitization, making stored payloads executed when the endpoint is processed.
+- The `getNetworkService` endpoint retrieves the `upnpEn` parameter using `GetValue("adv.upnp.en", v64)` and stores it on the stack without proper boundary checks, which may result in a stack overflow vulnerability.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251011_111649.png)
 
