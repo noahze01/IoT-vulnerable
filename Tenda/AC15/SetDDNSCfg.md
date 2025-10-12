@@ -1,6 +1,6 @@
 ## Overview
 
-The Tenda AC15 firmware exposes a stack-overflow vulnerability in `POST /goform/SetDDNSCfg`. The handler takes the `ddnsEn` POST parameter, assigns it to local variable `Var`, and stores it via `SetValue("adv.ddns1.en", a2)`. This configuration item can later be retrieved with `GetValue("not.notice.version",v39)` in `GET /goform/GetAdvanceStatus`. Since neither `SetValue` nor `GetValue` enforce size restrictions, an oversized `ddnsEn` value can overflow the stack buffer `v39`, leading to crashes or potential code execution.
+The Tenda AC15 firmware exposes a stack-overflow vulnerability in `POST /goform/SetDDNSCfg`. The handler takes the `ddnsEn` POST parameter, assigns it to local variable `Var`, and stores it via `SetValue("adv.ddns1.en", a2)`. This configuration item can later be retrieved with `GetValue("adv.ddns1.en",v39)` in `GET /goform/GetAdvanceStatus`. Since neither `SetValue` nor `GetValue` enforce size restrictions, an oversized `ddnsEn` value can overflow the stack buffer `v39`, leading to crashes or potential code execution.
 
 ## Affected version
 

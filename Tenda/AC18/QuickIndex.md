@@ -13,7 +13,7 @@ In the TendaAC18 Firmware has a stack overflow vulnerability in the `/goform/Qui
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250926_154952.png)
 
-`wan1.connecttype`  configuration item can  be retrieved through the GetValue function in the `/goform/GetDDNSCfg` url.However, neither the GetValue function nor the SetValue function impose any restrictions on the length of variables, which can lead to stack overflows.
+`wan1.connecttype`  configuration item can  be retrieved through the GetValue function in the `/goform/AdvGetLanIp` url.However, neither the GetValue function nor the SetValue function impose any restrictions on the length of variables, which can lead to stack overflows.
 
 ![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250926_160227.png)
 
@@ -39,7 +39,7 @@ second GetValue
 import requests
 
 ip = "192.168.0.1"
-url = "http://" + ip + "/goform/GetDDNSCfg"
+url = "http://" + ip + "/goform/AdvGetLanIp"
 response = requests.post(url)
 print(response.text)
 ```

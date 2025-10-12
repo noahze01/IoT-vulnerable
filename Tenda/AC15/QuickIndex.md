@@ -1,6 +1,6 @@
 ## Overview
 
-The Tenda AC15 firmware has a stack-overflow vulnerability in `POST /goform/QuickIndex`. The `mit_linktype` POST parameter is read into local variable `s2` and then stored via `SetValue("wan1.ppoe.userid", v9)`. The stored value can later be retrieved with `GetValue("wan1.ppoe.userid",s)` through `GET /goform/GetDDNSCfg`. Because neither `SetValue` nor `GetValue` enforce input size limits, an attacker can supply an oversized `mit_linktype` string that overflows a stack buffer when copied, potentially causing crashes or leading to code execution.
+The Tenda AC15 firmware has a stack-overflow vulnerability in `POST /goform/QuickIndex`. The `mit_linktype` POST parameter is read into local variable `s2` and then stored via `SetValue("wan1.ppoe.userid", v9)`. The stored value can later be retrieved with `GetValue("wan1.ppoe.userid",s)` through `GET /goform/fast_setting_get`. Because neither `SetValue` nor `GetValue` enforce input size limits, an attacker can supply an oversized `mit_linktype` string that overflows a stack buffer when copied, potentially causing crashes or leading to code execution.
 
 ## Affected version
 

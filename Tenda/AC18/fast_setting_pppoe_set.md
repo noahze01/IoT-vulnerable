@@ -15,7 +15,7 @@ In the TendaAC18 Firmware has a stack overflow vulnerability in the `/goform/fas
 
 `wan1.ppoe.userid`  configuration item can  be retrieved through the GetValue function in the `/goform/fast_setting_get` url.However, neither the GetValue function nor the SetValue function impose any restrictions on the length of variables, which can lead to stack overflows by the `s` variable.
 
-![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20250927_223700.png)
+![](https://raw.githubusercontent.com/abcdefg-png/images2/main/%E5%B1%80%E9%83%A8%E6%88%AA%E5%8F%96_20251012_093606.png)
 
 ## PoC
 
